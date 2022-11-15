@@ -1,2 +1,7 @@
-﻿  main.cpp
-  Sampul.vcxproj -> C:\新しいフォルダー\-ParticleTraining\x64\Debug\Sampul.exe
+﻿  Camera.cpp
+  Effect.cpp
+  main.cpp
+  Player.cpp
+  Stage.cpp
+  コードを生成中...
+  Sampul.vcxproj -> C:\新しいフォルダー\ParticleTraining3D\x64\Debug\Sampul.exe
