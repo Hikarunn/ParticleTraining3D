@@ -20,9 +20,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (DxLib_Init() < 0)
 		return -1;
 
+
 	
-	// •`‰ææ‚ð— ‰æ–Ê‚É‚·‚é
-	SetDrawScreen(DX_SCREEN_BACK);
+	
+	bool isFullScreen = false;
 
 	// ‚d‚r‚bƒL[‚ª‰Ÿ‚³‚ê‚é‚©AƒEƒCƒ“ƒhƒE‚ª•Â‚¶‚ç‚ê‚é‚Ü‚Åƒ‹[ƒv
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
@@ -31,6 +32,21 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		ClearDrawScreen();
 
 	
+		if (CheckHitKey(KEY_INPUT_F1) && !isFullScreen)
+		{
+			ChangeWindowMode(FALSE);
+			// •`‰ææ‚ð— ‰æ–Ê‚É‚·‚é
+			SetDrawScreen(DX_SCREEN_BACK);
+
+			isFullScreen = true;
+		}
+		if (CheckHitKey(KEY_INPUT_F2) && isFullScreen)
+		{
+			ChangeWindowMode(TRUE);
+			// •`‰ææ‚ð— ‰æ–Ê‚É‚·‚é
+			SetDrawScreen(DX_SCREEN_BACK);
+			isFullScreen = false;
+		}
 
 		// — ‰æ–Ê‚Ì“à—e‚ð•\‰æ–Ê‚É”½‰f
 		ScreenFlip();
