@@ -2,6 +2,7 @@
 
 void Effect::Init(void)
 {
+
 }
 
 void Effect::Create(void)

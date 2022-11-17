@@ -1,9 +1,7 @@
 ﻿  Camera.cpp
-  Input.cpp
-  main.cpp
-  Player.cpp
-C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(46,9): warning C4101: 'leftMoveVec_': ローカル変数は 1 度も使われていません。
-C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(45,9): warning C4101: 'advanceMoveVec_': ローカル変数は 1 度も使われていません。
+  Effect.cpp
+  Scene.cpp
   Stage.cpp
+  main.cpp
   コードを生成中...
   Sampul.vcxproj -> C:\新しいフォルダー\ParticleTraining3D\x64\Debug\Sampul.exe

@@ -1,5 +1,7 @@
 #pragma once
- 
+enum class Effect_Test {
+
+ };
 
 
 class Effect

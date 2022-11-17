@@ -40,21 +40,43 @@ public:
 	void Jump(void);
 	void SetJumpPow(float jumpPow);
 	void AddGravity(void);
+	void Draw(void);
+	VECTOR GetPos(void);
+
+	int modelHandle_; //モデルのハンドル
+	int shadowHandle_; //影のハンドル
+
 
 private:
 	AnimAction anim_;	//　状態
 
+	Camera* camera_;
+
+	//　ルートフレームのz軸方向の移動パラメータを無効化する
+	void LootFlameCancel(void);
+
+	// プレイヤーの移動方向のベクトルを算出
+	void MoveVecOutput(void);
+
+	// プレイヤーの移動制御
+	void MovementControl(void);
+
 	VECTOR pos_;	//　座標
 	VECTOR moveDir_;	//　モデルの向くべき方向
-	float angle_;	//　モデルの向いている方向
-	float jumpPower_; // ジャンプ力
-	int modelHandle_; //モデルのハンドル
-	int shadowHandle_; //影のハンドル
-	int animTime_;		//アニメーション時間
-	int animCont;		//アニメーション用のカウンタ
 	
+	VECTOR advanceMoveVec_;	// 前進を押したときのの移動方向
+	VECTOR leftMoveVec_;	// 左を押したときのの移動方向
+	VECTOR moveVec_;		// このフレームの移動ベクトル
+	bool moveFlag_;			// 移動したかどうかのフラグ（true→移動した,false→移動していない)
 
 	bool isJump_ = false;	// ジャンプフラグ
+
+	float angle_;			//　モデルの向いている方向
+	float jumpPower_;		// ジャンプ力
+
+	int animTime_;			//アニメーション時間
+	int animCont;			//アニメーション用のカウンタ
+
 	//float playAnim_;
 	
 
