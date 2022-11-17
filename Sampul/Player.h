@@ -51,6 +51,7 @@ private:
 	AnimAction anim_;	//　状態
 
 	Camera* camera_;
+	Stage* stage_;
 
 	//　ルートフレームのz軸方向の移動パラメータを無効化する
 	void LootFlameCancel(void);
@@ -60,6 +61,8 @@ private:
 
 	// プレイヤーの移動制御
 	void MovementControl(void);
+
+	void PlayingAnim(int playAnimNo1);
 
 	VECTOR pos_;	//　座標
 	VECTOR moveDir_;	//　モデルの向くべき方向
@@ -73,12 +76,19 @@ private:
 
 	float angle_;			//　モデルの向いている方向
 	float jumpPower_;		// ジャンプ力
+	float animTotalTime_;	// 再生しているアニメーションの総時間
 
 	int animTime_;			//アニメーション時間
 	int animCont;			//アニメーション用のカウンタ
 
 	//float playAnim_;
 	
+	int	playAnim1_;				// 再生しているアニメーション１のアタッチ番号( -1:何もアニメーションがアタッチされていない )
+	float animPlayCount1_;			// 再生しているアニメーション１の再生時間
+	int	playAnim2_;				// 再生しているアニメーション２のアタッチ番号( -1:何もアニメーションがアタッチされていない )
+	float animPlayCount2_;			// 再生しているアニメーション２の再生時間
+	float animBlendRate_;				// 再生しているアニメーション１と２のブレンド率
 
+	
 };
 
