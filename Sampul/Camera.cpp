@@ -1,7 +1,13 @@
 #include "DxLib.h"
+#include "Scene.h"
 #include "Stage.h"
 #include "Player.h"
 #include "Camera.h"
+
+Camera::Camera(Scene* scene)
+{
+	scene_ = scene;
+}
 
 void Camera::Init(void)
 {
@@ -59,7 +65,7 @@ void Camera::Process(void)
 		}
 	}
 
-	target_ = VAdd(player_->GetPos(), VGet(0.0f, CAMERA_PLAYER_TARGET_HEIGHT, 0.0f));
+	target_ = VAdd(scene_->player_->GetPos(), VGet(0.0f, CAMERA_PLAYER_TARGET_HEIGHT, 0.0f));
 
 	CameraPos();
 	
@@ -99,7 +105,7 @@ void Camera::CheckStage(MATRIX rotZ, MATRIX rotY, float cameraPlayerLength)
 	int hitNum_;
 
 
-	res_ = MV1CollCheck_Capsule(stage_->modelHandle_, -1, target_, eye_, CAMERA_COLLISION_SIZE);
+	res_ = MV1CollCheck_Capsule(scene_->stage_->modelHandle_, -1, target_, eye_, CAMERA_COLLISION_SIZE);
 	hitNum_ = res_.HitNum;
 	MV1CollResultPolyDimTerminate(res_);
 	if (hitNum_ != 0)
@@ -120,7 +126,7 @@ void Camera::CheckStage(MATRIX rotZ, MATRIX rotY, float cameraPlayerLength)
 			testPos_ = VAdd(VTransform(VTransform(VGet(-testLength, 0.0f, 0.0f), rotZ), rotY), target_);
 
 			// V‚µ‚¢À•W‚Å•Ç‚É“–‚½‚é‚©
-			res_ = MV1CollCheck_Capsule(stage_->modelHandle_, -1, target_, testPos_, CAMERA_COLLISION_SIZE);
+			res_ = MV1CollCheck_Capsule(scene_->stage_->modelHandle_, -1, target_, testPos_, CAMERA_COLLISION_SIZE);
 			hitNum_ = res_.HitNum;
 			MV1CollResultPolyDimTerminate(res_);
 

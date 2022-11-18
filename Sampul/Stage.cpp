@@ -1,6 +1,12 @@
 #include <DxLib.h>
 #include "Stage.h"
 
+Stage::Stage(Scene* scene)
+{
+	scene_ = scene;
+	Init();
+}
+
 void Stage::Init(void)
 {
 	modelHandle_ = MV1LoadModel(L"Model/ColTestStage.mqo");
@@ -13,6 +19,10 @@ void Stage::Init(void)
 void Stage::Terminalize(void)
 {
 	MV1DeleteModel(modelHandle_);
+}
+
+void Stage::Update(void)
+{
 }
 
 void Stage::Draw(void)

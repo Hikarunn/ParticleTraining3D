@@ -1,15 +1,15 @@
 // パーティクル基本
 #include <DxLib.h>
-#include <math.h>
-#include "Effect.h"
-#include "Camera.h"
-#include "Stage.h"
-#include "Player.h"
+#include "Application.h"
+//#include "Effect.h"
+//#include "Camera.h"
+//#include "Stage.h"
+//#include "Player.h"
 
-
-Player* player_;
-Camera* camera_;
-Stage* stage_;
+//
+//Player* player_;
+//Camera* camera_;
+//Stage* stage_;
 
 
 //void Draw(void)
@@ -27,65 +27,27 @@ Stage* stage_;
 // WinMain
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	// ウインドウモードで起動
-	ChangeWindowMode(TRUE);
+	Application application_;
 
-	// ライブラリの初期化
-	if (DxLib_Init() < 0)
-		return -1;
-
-	player_ = new Player();
-	player_->Init();
-	camera_ = new Camera();
-	camera_->Init();
-	stage_ = new Stage();
-	stage_->Init();
-
-	// 描画先を裏画面にする
-	SetDrawScreen(DX_SCREEN_BACK);
-
-	
-	bool isFullScreen = false;
-
-	// ＥＳＣキーが押されるか、ウインドウが閉じられるまでループ
-	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
+	if (!application_.Init())
 	{
-		// 画面をクリア
-		ClearDrawScreen();
-
-		
-	
-		if (CheckHitKey(KEY_INPUT_F1) && !isFullScreen)
-		{
-			ChangeWindowMode(FALSE);
-			// 描画先を裏画面にする
-			SetDrawScreen(DX_SCREEN_BACK);
-
-			isFullScreen = true;
-		}
-		if (CheckHitKey(KEY_INPUT_F2) && isFullScreen)
-		{
-			ChangeWindowMode(TRUE);
-			// 描画先を裏画面にする
-			SetDrawScreen(DX_SCREEN_BACK);
-			isFullScreen = false;
-		}
-
-		player_->Process();
-		camera_->Process();
-		stage_->Draw();
-
-
-		// 裏画面の内容を表画面に反映
-		ScreenFlip();
+		return -1;
 	}
-	player_->Terminate();
+	application_.Run();
 
-	stage_->Terminalize();
+	if (!application_.Release())
+	{
+		return -1;
+	}
 
-	// ライブラリの後始末
-	DxLib_End();
-
-	// ソフト終了
 	return 0;
+	// ＥＳＣキーが押されるか、ウインドウが閉じられるまでループ
+	
+	/*player_->Terminate();
+
+	stage_->Terminalize();*/
+
+
+
+	
 }

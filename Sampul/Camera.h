@@ -1,7 +1,7 @@
 #pragma once
 
-class Stage;
-class Player;
+class Scene;
+
 
 static constexpr float CAMERA_ANGLE_SPEED = 0.05f;
 static constexpr float CAMERA_PLAYER_TARGET_HEIGHT = 400.0f;
@@ -13,6 +13,7 @@ static constexpr float CAMERA_COLLISION_SIZE = 50.0f;
 class Camera
 {
 public:
+	Camera(Scene* scene);
 	void Init(void);
 
 	void Process(void);
@@ -25,6 +26,8 @@ public:
 	VECTOR GetEye(void);
 
 private:
+	Scene* scene_;
+
 
 	// äpìx
 	float angleH_;		// êÖïΩ
@@ -39,8 +42,8 @@ private:
 	VECTOR eye_;		// ÉJÉÅÉâ
 	VECTOR target_;		// íçéãì_
 
-	Player* player_;
-	Stage* stage_;
+	//Player* player_;
+	//Stage* stage_;
 
 
 

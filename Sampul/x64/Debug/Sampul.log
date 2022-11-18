@@ -1,7 +1,6 @@
-﻿  Camera.cpp
-  Effect.cpp
-  Scene.cpp
-  Stage.cpp
-  main.cpp
-  コードを生成中...
+﻿  Player.cpp
+C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(230,27): warning C4244: '=': 'double' から 'BYTE' への変換です。データが失われる可能性があります。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(234,27): warning C4244: '=': 'double' から 'BYTE' への変換です。データが失われる可能性があります。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(238,27): warning C4244: '=': 'double' から 'BYTE' への変換です。データが失われる可能性があります。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(452,25): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
   Sampul.vcxproj -> C:\新しいフォルダー\ParticleTraining3D\x64\Debug\Sampul.exe

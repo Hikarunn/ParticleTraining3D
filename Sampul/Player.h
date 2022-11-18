@@ -18,17 +18,27 @@ static constexpr int PLAYER_MAX_HITCOLL = 2048;
 static constexpr int PLAYER_HIT_TRYNUM = 16;
 
 enum class AnimAction {
+	T,				//Tポーズ
 	STAY,			//待機
-	WALK,			//歩き
+	RUN,			//走り
+	JUMP,			//ジャンプ
+	ATTACK			//攻撃
+};
+enum class ActionState {
+	T,				//Tポーズ
+	STAY,			//待機
 	RUN,			//走り
 	JUMP,			//ジャンプ
 	ATTACK			//攻撃
 };
 
+class Scene;
+
 
 class Player
 {
 public:
+	Player(Scene* scene);
 	void Init(void);
 	void Terminate(void);
 	void Process(void);
@@ -48,10 +58,11 @@ public:
 
 
 private:
-	AnimAction anim_;	//　状態
+	AnimAction anim_;	//　アニメーション状態
+	ActionState state_;  //現在の状態
 
-	Camera* camera_;
-	Stage* stage_;
+	Scene* scene_;
+	
 
 	//　ルートフレームのz軸方向の移動パラメータを無効化する
 	void LootFlameCancel(void);
@@ -62,7 +73,13 @@ private:
 	// プレイヤーの移動制御
 	void MovementControl(void);
 
+	// 停止処理
+	void StopMove(void);
+
+	//アニメーションの再生
 	void PlayingAnim(int playAnimNo1);
+
+
 
 	VECTOR pos_;	//　座標
 	VECTOR moveDir_;	//　モデルの向くべき方向
@@ -78,9 +95,10 @@ private:
 	float jumpPower_;		// ジャンプ力
 	float animTotalTime_;	// 再生しているアニメーションの総時間
 
-	int animTime_;			//アニメーション時間
-	int animCont;			//アニメーション用のカウンタ
+	int animTime_;			// アニメーション時間
+	int animCont;			// アニメーション用のカウンタ
 
+	
 	//float playAnim_;
 	
 	int	playAnim1_;				// 再生しているアニメーション１のアタッチ番号( -1:何もアニメーションがアタッチされていない )
