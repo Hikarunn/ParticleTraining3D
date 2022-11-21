@@ -1,5 +1,6 @@
 #pragma once
 
+class EffectSphere;
 
 	enum class EffectNum {
 		effect_Sphere_,
@@ -69,10 +70,10 @@ public:
 	void StepAll(float stepTime);
 
 private:
-	
+	EffectSphere *sphere_;
 
 	// エフェクト別の処理を分けるためのコールバック関数テーブル
-	struct EffectFunction
+	typedef struct EffectFunction
 	{
 		// 初期化時に呼ばれる関数へのポインタ
 		bool (*Init)(EffectBaseInfo* baseInfo_);
@@ -92,13 +93,9 @@ private:
 		// 描画時に呼ばれる関数へのポインタ
 		void (*Render)(EffectInfo* effectInfo);
 
-	};
+	}Function;
 
-	struct EffectFunction effectFunctionTable_[(int)EffectNum::effectNum_] =
-	{
-
-	};
-
+	
 
 	
 };

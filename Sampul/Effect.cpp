@@ -50,8 +50,10 @@ void Effect::Delete(EffectInfo* effectInfo)
 
 void Effect::DeleteAll(void)
 {
+
 }
 
 void Effect::StepAll(float stepTime)
 {
+
 }
