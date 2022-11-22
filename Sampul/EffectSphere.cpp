@@ -70,7 +70,7 @@ typedef struct EffectSphereInfo
 	COLOR_U8 color;
 
 	// パーティクルの数
-	int paticleNum;
+	int particleNum;
 
 	// パーティクルの情報を格納しているメモリ領域のアドレス
 	EffectSphereParticleInfo* partiicle_;
@@ -127,7 +127,7 @@ bool EffectSphere::EffectSphereCreate(Effect::EffectInfo* effectInfo)
 	return true;
 }
 
-void EffectSphere::EffectSphereStep(Effect::EffectInfo* effectInfo, float stepTime)
+void EffectSphere::EffectSphereDelete(Effect::EffectInfo* effectInfo)
 {
 	EffectSphereInfo* info_ = (EffectSphereInfo*)effectInfo->subData;
 
@@ -138,8 +138,112 @@ void EffectSphere::EffectSphereStep(Effect::EffectInfo* effectInfo, float stepTi
 	}
 }
 
+void EffectSphere::EffectSphereStep(Effect::EffectInfo* effectInfo, float stepTime)
+{
+	EffectSphereInfo* info_ = (EffectSphereInfo*)effectInfo->subData;
+	EffectSphereParticleInfo* particleInfo_;
+	int num_;
+	int validNum_;
+
+	// 有効なパーティクルの数を初期化
+	validNum_;
+
+	// パーティクルの数だけ繰り返し
+	particleInfo_ = info_->partiicle_;
+	for (num_ = 0; num_ < info_->particleNum; num_++, particleInfo_++)
+	{
+		// 不透明度が０以下の場合は次のループへ
+		if (particleInfo_->alpha_ <= 0.0f)
+		{
+			continue;
+		}
+
+		// 有効なパーティクルの数を増やす
+		validNum_++;
+
+		// 大きさが1.0f未満の場合は大きさ率をあげる
+		if (particleInfo_->sizeRate_< 0.99999f)
+		{
+			particleInfo_->sizeRate_ += stepTime * SIZERATE_SPEED;
+			if (particleInfo_->sizeRate_ > 1.0f)
+			{
+				particleInfo_->sizeRate_ = 1.0f;
+			}
+		}
+		else
+		{
+			// 角度を変更
+			particleInfo_->angleSpeed_ += stepTime * particleInfo_->angleSpeed_;
+
+			// 表示時間が０より大きいかで分岐
+			if (particleInfo_->visibleTime_ > 0.0f)
+			{
+				// 表示時間が０より大きい場合表示時間を減らす
+				particleInfo_->visibleTime_ -= stepTime;
+			}
+			else
+			{
+				// 表示時間が０以下だったら不透明度を減らす
+				particleInfo_->alpha_ -= stepTime * ALPHA_DOWN_SPEED;
+			}
+			// 上昇待ち時間が０より大きいかで分岐
+			if (particleInfo_->upWait_ > 0.0f)
+			{
+				// 上昇待ち時間が０より大きかったら上昇待ち時間を減らす
+				particleInfo_->upWait_ -= stepTime;
+			}
+			else
+			{
+				// 上昇待ち時間が０の場合
+
+				// 上昇速度を上げる
+				if (particleInfo_->upSpeed_ < particleInfo_->upMaxSpeed_)
+				{
+					particleInfo_->upSpeed_ += stepTime * UPACCEL;
+					if (particleInfo_->upSpeed_ > particleInfo_->upMaxSpeed_)
+					{
+						particleInfo_->upSpeed_ = particleInfo_->upMaxSpeed_;
+					}
+
+				}
+
+				// パーティクルを上昇させる
+				particleInfo_->pos_.y += particleInfo_->upSpeed_ * stepTime;
+
+				// パーティクル座標からの水平方向距離
+				if (particleInfo_->distance_ < particleInfo_->distanceMax_)
+				{
+					particleInfo_->distance_ += stepTime * H_DISTANCE_SPEED;
+					if (particleInfo_->distance_ > particleInfo_->distanceMax_)
+					{
+						particleInfo_->distance_ = particleInfo_->distanceMax_;
+					}
+				}
+
+			}
+		}
+	}
+	// 終了リクエストがされ有効なパーティクル数も０だったらエフェクトを削除する
+	if (effectInfo->endRequest || validNum_ == 0)
+	{
+		//Effect::Delete(effectInfo);
+
+		// すでに構造体が使用されていなかった場合何もせず終了
+		if (effectInfo->useFlag_)
+		{
+			return;
+		}
+		//// 削除時に実行する関数が存在する場合はメモリを解放
+		//if(effectFunc)
+	}
+
+
+}
+
+
 void EffectSphere::EffectSphereRender(Effect::EffectInfo* effectInfo)
 {
+
 }
 
 void EffectSphere::EffectSphereSetup(Effect::EffectInfo* effectInfo, COLOR_U8 color, int modelHandle)

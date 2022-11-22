@@ -1,4 +1,5 @@
 #pragma once
+#include "EffectBase.h"
 
 // 
 static constexpr float CREATE_RATE = 0.025f;
@@ -79,27 +80,31 @@ static constexpr int ADD_PARTICLE_NUM = 10;
 //
 
 
-class EffectSphere
+class EffectSphere:public EffectBase
 {
 public:
 	// 球の軌跡エフェクトの基本情報初期関数 
-	bool EffectSphreInit(Effect::EffectBaseInfo* effectInfo);
+	//bool EffectSphreInit(Effect::EffectBaseInfo* effectInfo);
+	bool Init(Effect::EffectBaseInfo);
 
 	// エフェクトの基本情報後始末
-	void EffectSphereTerminate(Effect::EffectBaseInfo* effectInfo);
+	//void EffectSphereTerminate(Effect::EffectBaseInfo* effectInfo);
 	
 	// 球の軌跡エフェクトが作成された際に呼ばれる関数
-	bool EffectSphereCreate(Effect::EffectInfo* effectInfo);
+	//bool EffectSphereCreate(Effect::EffectInfo* effectInfo);
+
+	// 削除時に呼ばれる関数
+	//void EffectSphereDelete(Effect::EffectInfo* effectInfo);
 
 	// 球の軌跡エフェクトの状態遷移処理関数
-	void EffectSphereStep(Effect::EffectInfo* effectInfo,float stepTime);
+	//void EffectSphereStep(Effect::EffectInfo* effectInfo,float stepTime);
 	
 	// 球の軌跡エフェクトの描画処理関数
-	void EffectSphereRender(Effect::EffectInfo* effectInfo);
+	//void EffectSphereRender(Effect::EffectInfo* effectInfo);
 	
 	// 球の軌跡エフェクト処理の準備をする関数
 	// Color エフェクトの色
-	void EffectSphereSetup(Effect::EffectInfo* effectInfo, COLOR_U8 color, int modelHandle);
+	//void EffectSphereSetup(Effect::EffectInfo* effectInfo, COLOR_U8 color, int modelHandle);
 	
 	// 級の軌跡に使用する座標を追加する
 	// newCenterPos 球の中心座標

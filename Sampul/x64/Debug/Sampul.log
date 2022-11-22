@@ -1,6 +1,41 @@
-﻿  Player.cpp
-C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(258,27): warning C4244: '=': 'double' から 'BYTE' への変換です。データが失われる可能性があります。
-C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(262,27): warning C4244: '=': 'double' から 'BYTE' への変換です。データが失われる可能性があります。
-C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(266,27): warning C4244: '=': 'double' から 'BYTE' への変換です。データが失われる可能性があります。
-C:\新しいフォルダー\ParticleTraining3D\Sampul\Player.cpp(485,25): warning C4244: '=': 'double' から 'float' への変換です。データが失われる可能性があります。
-  Sampul.vcxproj -> C:\新しいフォルダー\ParticleTraining3D\x64\Debug\Sampul.exe
+﻿  Effect.cpp
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(9,15): error C2061: 構文エラー: 識別子 'EffectBaseInfo'
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(12,20): error C2061: 構文エラー: 識別子 'EffectBaseInfo'
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(15,17): error C2061: 構文エラー: 識別子 'EffectInfo'
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(18,17): error C2061: 構文エラー: 識別子 'EffectInfo'
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(21,15): error C2061: 構文エラー: 識別子 'EffectInfo'
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(24,17): error C2061: 構文エラー: 識別子 'EffectInfo'
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectCommon.h(26,2): warning C4091: 'typedef ': 変数が何も宣言されていないときは、'EffectFunction' の左辺を無視します。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(12,24): error C2374: 'MAX_UPWAIT': 再定義されています。2 回以上初期化されています。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(8): message : 'MAX_UPWAIT' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(34,24): error C2374: 'MAX_VISIBLETIME': 再定義されています。2 回以上初期化されています。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(33): message : 'MAX_VISIBLETIME' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(42,24): error C2374: 'MAX_SIZE': 再定義されています。2 回以上初期化されています。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(41): message : 'MAX_SIZE' の宣言を確認してください
+  EffectBase.cpp
+  EffectSphere.cpp
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(12,24): error C2374: 'MAX_UPWAIT': 再定義されています。2 回以上初期化されています。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(8): message : 'MAX_UPWAIT' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(34,24): error C2374: 'MAX_VISIBLETIME': 再定義されています。2 回以上初期化されています。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(33): message : 'MAX_VISIBLETIME' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(42,24): error C2374: 'MAX_SIZE': 再定義されています。2 回以上初期化されています。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(41): message : 'MAX_SIZE' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(24,2): warning C4091: 'typedef ': 変数が何も宣言されていないときは、'EffectSpherePolygonInfo' の左辺を無視します。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(64,2): warning C4091: 'typedef ': 変数が何も宣言されていないときは、'EffectSphereParticleInfo' の左辺を無視します。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(77,2): warning C4091: 'typedef ': 変数が何も宣言されていないときは、'EffectSphereInfo' の左辺を無視します。
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(83,20): error C2039: 'EffectSphreInit': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(99,20): error C2039: 'EffectSphereTerminate': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(110,20): error C2039: 'EffectSphereCreate': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(130,20): error C2039: 'EffectSphereDelete': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(141,20): error C2039: 'EffectSphereStep': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(244,20): error C2039: 'EffectSphereRender': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.cpp(249,20): error C2039: 'EffectSphereSetup': 'EffectSphere' のメンバーではありません
+C:\新しいフォルダー\ParticleTraining3D\Sampul\EffectSphere.h(83): message : 'EffectSphere' の宣言を確認してください
+  Mathematics.cpp
+  コードを生成中...
